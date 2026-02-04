@@ -47,6 +47,34 @@
   background-size: contain;
 }
 
+.log {
+  width: 350px;
+  height: 120px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.log-grid {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  grid-template-rows: repeat(2, max-content);
+  gap: 10px 14px;
+  place-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.surfing-frog {
+  background-image: url("../assets/sponsors/surfing-frog.svg");
+}
+
+.surfing-crab {
+  background-image: url("../assets/sponsors/surfing-crab.svg");
+}
+
 .oucu {
   background-image: url("../assets/sponsors/log_OUCU.svg");
 }
