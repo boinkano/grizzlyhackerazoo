@@ -16,10 +16,12 @@
     color: rgba(35, 75, 29, 0.768);
 }
 .purple-surfboard {
-    background-color: #1e88e5;
+    text-align: center;
+    color: rgba(53, 26, 79, 0.768);
 }
 .teal-surfboard {
-    background-color: #8e24aa;
+    text-align: center;
+    color: rgba(20, 61, 60, 0.768);
 }
 
 .overlay-text {
