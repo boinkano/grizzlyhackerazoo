@@ -88,3 +88,4 @@ window.closeModal = function () {
 modalOverlay.addEventListener("click", (e) => {
   if (e.target === modalOverlay) closeModal();
 });
+

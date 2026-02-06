@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Track previous progress to detect crossing into bridge zone
   let lastProgress = 0;
 
-  // log autoscroller
+  // float-items autoscroller
   const float_items = document.querySelectorAll(".float-item");
   const trackWidth = window.innerWidth * 2;
 
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         x: trackWidth + 200, // start off screen
       },
       {
-        x: -300, // end off screen
+        x: -350, // end off screen
         duration: randomDuration,
         ease: "none",
         repeat: -1,
