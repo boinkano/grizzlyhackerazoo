@@ -41,7 +41,6 @@
     transform: scale(1.02);
 }
 .popout-trigger::after {
-    content: "Click to view >";
     position: absolute;
     right: 20px;
     font-size: 0.8em;
