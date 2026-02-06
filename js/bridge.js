@@ -24,16 +24,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   horizontalTimeline.to({}, { duration: 0.15 });
 
-  // log autoscroller
-  const logs = document.querySelectorAll(".log-item");
+  // float-items autoscroller
+  const float_items = document.querySelectorAll(".float-item");
   const trackWidth = window.innerWidth * 2;
 
-  logs.forEach((log) => {
+  float_items.forEach((float_item) => {
     const randomDuration = 10 + Math.random() * 8;
     const randomDelay = Math.random() * 5;
 
     gsap.fromTo(
-      log,
+      float_item,
       {
         x: trackWidth + 200, // start off screen
       },
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const startPad = 200;
   const endPad = 350;
 
-  const waves = gsap.utils.toArray(".log-item.wave");
+  const waves = gsap.utils.toArray(".float-item.wave");
 
   // group waves by lane (same top)
   const lanes = waves.reduce((acc, el) => {

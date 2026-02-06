@@ -28,45 +28,115 @@
   z-index: 10;
 }
 
-.log-stream {
+.float-stream {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 1;
   pointer-events: none;
 }
 
-.log-item {
+.float-item {
   position: absolute;
-  width: 350px;
-  height: 120px;
+  width: clamp(160px, 30vw, 350px);
+  height: clamp(60px, 12vw, 120px);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  pointer-events: none;
+  z-index: 1; /* behind boats */
 }
 
-.log {
-  width: 350px;
-  height: 120px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+.wave {
+  width: clamp(140px, 22vw, 320px);
+  height: clamp(35px, 6vw, 80px);
+  background-image: url("../assets/sponsors/wave.svg");
 }
 
-.log-grid {
+/* Logic for keeping waves in the river */
+:root {
+  --blue-top: 30%;
+  --blue-height: 30%;
+}
+
+.float-item.wave {
+  top: calc(var(--blue-top) + (var(--lane-y, 0) * var(--blue-height)));
+}
+
+.surfing-frog {
+  width: clamp(90px, 12vw, 170px);
+  height: clamp(70px, 10vw, 140px);
+  background-image: url("../assets/sponsors/surfing-frog.svg");
+  transform: scaleX(-1);
+}
+
+.surfing-crab {
+  background-image: url("../assets/sponsors/surfing-crab.svg");
+  transform: scaleX(-1);
+}
+
+.boat-grid {
   display: grid;
   grid-template-columns: repeat(2, max-content);
-  grid-template-rows: repeat(2, max-content);
-  gap: 10px 14px;
+  justify-content: center;
+
+  gap: clamp(8px, 1.5vw, 14px) clamp(4px, 1vw, 8px);
+
+  width: min(90vw, 780px);
+  margin: 0 auto;
+
   place-content: center;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+  place-items: center;
+
+  z-index: 2;
   pointer-events: none;
 }
 
+.boat {
+  width: clamp(140px, 24vw, 280px);
+  aspect-ratio: 25 / 8;
+  height: auto;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Sponsors! */
+.oucu {
+  grid-column: 1 / -1;
+
+  width: clamp(220px, 55vw, 520px);
+  aspect-ratio: 10 / 3;
+  height: auto;
+
+  background-image: url("../assets/sponsors/OUCU_boat.svg");
+}
+
+.intrepid {
+  background-image: url("../assets/sponsors/intrepid_boat.svg");
+}
+
+.retail {
+  background-image: url("../assets/sponsors/365_boat.svg");
+}
+
+.stellantis {
+  background-image: url("../assets/sponsors/stellantis_boat.svg");
+}
+
+.tomey {
+  background-image: url("../assets/sponsors/tomey_boat.svg");
+}
+
+.lightguide {
+  background-image: url("../assets/sponsors/lightguide_boat.svg");
+}
+
+.onestream {
+  background-image: url("../assets/sponsors/onestream_boat.svg");
+}
+
+/* Sponsor animations */
 @keyframes bob {
   0% {
     transform: translateY(0);
@@ -100,55 +170,10 @@
   animation: river-float 5s ease-in-out infinite;
 }
 
-.wave {
-  background-image: url("../assets/sponsors/wave.svg");
-}
-
-.surfing-frog {
-  background-image: url("../assets/sponsors/surfing-frog.svg");
-  transform: scaleX(-1);
-}
-
-.surfing-crab {
-  background-image: url("../assets/sponsors/surfing-crab.svg");
-  transform: scaleX(-1);
-}
-
-.oucu {
-  background-image: url("../assets/sponsors/log_OUCU.svg");
-}
-.intrepid {
-  background-image: url("../assets/sponsors/log_Intrepid.svg");
-}
-.retail {
-  background-image: url("../assets/sponsors/log_365.svg");
-}
-.stellantis {
-  background-image: url("../assets/sponsors/log_stellantis.svg");
-}
-
-.lightguide {
-  background-image: url("../assets/sponsors/log_lightguide.svg");
-}
-.onestream {
-  background-image: url("../assets/sponsors/log_onestream.svg");
-}
-
 .bridge-container {
   z-index: 20;
   width: 50%;
   height: 110vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transform: rotate(-1deg);
-  padding: 20px 0;
-  box-sizing: border-box;
-}
-
-.bridge-container {
-  width: 50%;
-  height: 110vh; /* taller than screen to allow runoff */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -171,6 +196,7 @@
   transition: background 0.2s;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
 }
+
 .plank-btn:hover {
   background: #a1887f;
 }
@@ -182,7 +208,6 @@
   height: 6px;
   background: #3e2723;
   border-radius: 50%;
-  display: block;
 }
 
 .plank-dummy {
@@ -190,5 +215,4 @@
   border: 2px solid #5d4037;
   height: 40px;
   opacity: 0.6;
-  position: relative;
 }
