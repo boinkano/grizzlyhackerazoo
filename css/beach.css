@@ -25,14 +25,6 @@
     flex-direction: column;
 }
 
-.track-container {
-    width: 80%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 .popout-trigger {
     padding: 20px;
     border-radius: 8px;
@@ -54,18 +46,4 @@
     right: 20px;
     font-size: 0.8em;
     opacity: 0.7;
-}
-
-/* Colors */
-/* .track-red {
-    background-color: #e53935;
-} */
-.track-green {
-    background-color: #43a047;
-}
-.track-blue {
-    background-color: #1e88e5;
-}
-.track-purple {
-    background-color: #8e24aa;
 }
