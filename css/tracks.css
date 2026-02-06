@@ -41,5 +41,7 @@
     
     padding: 10px;
     filter: drop-shadow(-5px 7px 4px rgba(0, 0, 0, 0.2));
+    pointer-events: none;
 
 }
+
