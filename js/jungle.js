@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const passportBg = document.querySelector(".passport-background");
   const leftPage = document.querySelector(".passport-page-left");
   const rightPage = document.querySelector(".passport-page-right");
+  const prevBtn = document.querySelector(".passport-nav-prev");
+  const nextBtn = document.querySelector(".passport-nav-next");
+  const pageIndex = document.querySelector(".passport-page-index");
 
   if (
     !trigger ||
@@ -15,6 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     !passportBg ||
     !leftPage ||
     !rightPage ||
+    !prevBtn ||
+    !nextBtn ||
+    !pageIndex ||
     typeof gsap === "undefined"
   ) {
     return;
@@ -25,74 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentSpreadIndex = 0;
   let isAnimating = false;
   let activeFlipUnderlay = null;
+  const FLIP_OUT_DURATION = 0.22;
+  const FLIP_IN_DURATION = 0.26;
 
-  const prevBtn = document.createElement("button");
-  prevBtn.type = "button";
-  prevBtn.textContent = "<";
-  prevBtn.setAttribute("aria-label", "Previous page");
-  prevBtn.style.position = "absolute";
-  prevBtn.style.right = "2px";
-  prevBtn.style.top = "2px";
-  prevBtn.style.width = "6px";
-  prevBtn.style.height = "6px";
-  prevBtn.style.padding = "0";
-  prevBtn.style.border = "none";
-  prevBtn.style.borderRadius = "3px";
-  prevBtn.style.background = "transparent";
-  prevBtn.style.color = "#0d3d8a";
-  prevBtn.style.fontSize = "0.12rem";
-  prevBtn.style.fontWeight = "700";
-  prevBtn.style.lineHeight = "1";
-  prevBtn.style.display = "flex";
-  prevBtn.style.alignItems = "center";
-  prevBtn.style.justifyContent = "center";
-  prevBtn.style.cursor = "pointer";
-  prevBtn.style.opacity = "0";
-  prevBtn.style.pointerEvents = "none";
-  prevBtn.style.zIndex = "6";
-  prevBtn.style.transform = "rotate(-180deg)";
-
-  const nextBtn = document.createElement("button");
-  nextBtn.type = "button";
-  nextBtn.textContent = ">";
-  nextBtn.setAttribute("aria-label", "Next page");
-  nextBtn.style.position = "absolute";
-  nextBtn.style.left = "2px";
-  nextBtn.style.top = "2px";
-  nextBtn.style.width = "6px";
-  nextBtn.style.height = "6px";
-  nextBtn.style.padding = "0";
-  nextBtn.style.border = "none";
-  nextBtn.style.borderRadius = "3px";
-  nextBtn.style.background = "transparent";
-  nextBtn.style.color = "#0d3d8a";
-  nextBtn.style.fontSize = "0.12rem";
-  nextBtn.style.fontWeight = "700";
-  nextBtn.style.lineHeight = "1";
-  nextBtn.style.display = "flex";
-  nextBtn.style.alignItems = "center";
-  nextBtn.style.justifyContent = "center";
-  nextBtn.style.cursor = "pointer";
-  nextBtn.style.opacity = "0";
-  nextBtn.style.pointerEvents = "none";
-  nextBtn.style.zIndex = "6";
-  nextBtn.style.transform = "rotate(-180deg)";
-
-  const pageIndex = document.createElement("div");
-  pageIndex.style.position = "absolute";
-  pageIndex.style.left = "50%";
-  pageIndex.style.bottom = "1px";
-  pageIndex.style.transform = "translateX(-50%) rotate(-180deg)";
-  pageIndex.style.fontSize = "0.16rem";
-  pageIndex.style.color = "#e7f0ff";
-  pageIndex.style.zIndex = "6";
-  pageIndex.style.opacity = "0";
-  pageIndex.style.pointerEvents = "none";
-  pageIndex.textContent = "1 / 1";
-
-  passportBg.appendChild(prevBtn);
-  passportBg.appendChild(nextBtn);
-  passportBg.appendChild(pageIndex);
   passportBg.style.perspective = "800px";
   passportBg.style.transformStyle = "preserve-3d";
   [leftPage, rightPage].forEach((page) => {
@@ -134,72 +75,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const createElement = (tag, className, textContent) => {
+    const element = document.createElement(tag);
+    if (className) {
+      element.className = className;
+    }
+    if (textContent) {
+      element.textContent = textContent;
+    }
+    return element;
+  };
+
   const renderPage = (target, pageData) => {
     target.innerHTML = "";
 
-    const wrapper = document.createElement("div");
-    wrapper.style.padding = "3px";
-    wrapper.style.width = "100%";
-    wrapper.style.height = "100%";
-    wrapper.style.boxSizing = "border-box";
-    wrapper.style.overflow = "hidden";
-    wrapper.style.display = "flex";
-    wrapper.style.flexDirection = "column";
-    wrapper.style.transform = "rotate(180deg)";
-    wrapper.style.transformOrigin = "center";
+    const wrapper = createElement("div", "passport-card");
 
     if (pageData.picture) {
-      const imageFrame = document.createElement("div");
-      imageFrame.style.width = "52%";
-      imageFrame.style.aspectRatio = "4 / 5";
-      imageFrame.style.margin = "0 auto 2px";
-      imageFrame.style.borderRadius = "3px";
-      imageFrame.style.overflow = "hidden";
-      imageFrame.style.flexShrink = "0";
-
-      const img = document.createElement("img");
+      const imageFrame = createElement("div", "passport-card-photo-frame");
+      const img = createElement("img", "passport-card-photo");
       img.src = pageData.picture;
       img.alt = "";
-      img.style.width = "100%";
-      img.style.height = "100%";
-      img.style.objectFit = "cover";
       imageFrame.appendChild(img);
       wrapper.appendChild(imageFrame);
     }
 
     if (pageData.name) {
-      const name = document.createElement("p");
-      name.textContent = pageData.name;
-      name.style.margin = "2px 0 1px";
-      name.style.fontSize = "0.2rem";
-      name.style.lineHeight = "1.1";
-      name.style.color = "#0d3d8a";
-      name.style.fontWeight = "700";
+      const name = createElement("p", "passport-card-name", pageData.name);
       wrapper.appendChild(name);
     }
 
     if (pageData.team) {
-      const team = document.createElement("p");
-      team.textContent = pageData.team;
-      team.style.margin = "0";
-      team.style.fontSize = "0.16rem";
-      team.style.lineHeight = "1.15";
-      team.style.color = "#10295a";
+      const team = createElement("p", "passport-card-team", pageData.team);
       wrapper.appendChild(team);
     }
 
     if (pageData.linkedin) {
-      const linkedin = document.createElement("a");
+      const linkedin = createElement("a", "passport-card-link", "LinkedIn");
       linkedin.href = pageData.linkedin;
       linkedin.target = "_blank";
       linkedin.rel = "noopener noreferrer";
-      linkedin.textContent = "LinkedIn";
-      linkedin.style.display = "inline-block";
-      linkedin.style.marginTop = "auto";
-      linkedin.style.fontSize = "0.14rem";
-      linkedin.style.lineHeight = "1.1";
-      linkedin.style.color = "#0d3d8a";
-      linkedin.style.textDecoration = "underline";
       wrapper.appendChild(linkedin);
     }
 
@@ -278,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.set(restingPage, { zIndex: 2 });
 
     gsap.to(turningPage, {
-      duration: 0.22,
+      duration: FLIP_OUT_DURATION,
       rotateY: midRotation,
       ease: "power2.in",
       onComplete: () => {
@@ -299,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         gsap.to(turningPage, {
-          duration: 0.26,
+          duration: FLIP_IN_DURATION,
           rotateY: 0,
           ease: "power2.out",
           onComplete: () => {
@@ -374,13 +289,13 @@ document.addEventListener("DOMContentLoaded", () => {
             picture: "assets/Frog.svg",
             name: "GrizzHacks 2026",
             team: "Organizer Team",
-            linkedin: "https://www.linkedin.com",
+            linkedin: "",
           },
           right: {
             picture: "assets/boat.svg",
             name: "Meet the Team",
             team: "Community",
-            linkedin: "https://www.linkedin.com",
+            linkedin: "",
           },
         },
       ];

@@ -53,12 +53,107 @@
     transform-origin: center;
 }
 
+.suitcase .passport-card {
+    padding: 3px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: rotate(180deg);
+    transform-origin: center;
+}
+
+.suitcase .passport-card-photo-frame {
+    width: 52%;
+    aspect-ratio: 4 / 5;
+    margin: 0 auto 2px;
+    border-radius: 3px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.suitcase .passport-card-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.suitcase .passport-card-name {
+    margin: 2px 0 1px;
+    font-size: 0.2rem;
+    line-height: 1.1;
+    color: #0d3d8a;
+    font-weight: 700;
+}
+
+.suitcase .passport-card-team {
+    margin: 0;
+    font-size: 0.16rem;
+    line-height: 1.15;
+    color: #10295a;
+}
+
+.suitcase .passport-card-link {
+    display: inline-block;
+    margin-top: auto;
+    font-size: 0.14rem;
+    line-height: 1.1;
+    color: #0d3d8a;
+    text-decoration: underline;
+}
+
 .suitcase .passport-page-left {
     left: 6px;
 }
 
 .suitcase .passport-page-right {
     right: 6px;
+}
+
+.suitcase .passport-nav {
+    position: absolute;
+    top: 2px;
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+    background: transparent;
+    color: #0d3d8a;
+    font-family: inherit;
+    font-size: 0.12rem;
+    font-weight: 700;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 6;
+    transform: rotate(-180deg);
+}
+
+.suitcase .passport-nav-prev {
+    right: 2px;
+}
+
+.suitcase .passport-nav-next {
+    left: 2px;
+}
+
+.suitcase .passport-page-index {
+    position: absolute;
+    left: 50%;
+    bottom: 1px;
+    transform: translateX(-50%) rotate(-180deg);
+    font-size: 0.16rem;
+    color: #e7f0ff;
+    z-index: 6;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .suitcase .passport-backout-btn {
@@ -102,11 +197,12 @@
     z-index: 4;
     padding: 14px 18px;
     border: 2px solid #0d3d8a;
-    border-radius: 10px;
+    border-radius: 6px;
     background: #ffffff;
     color: #0d3d8a;
+    font-family: inherit;
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: 800;
     text-align: center;
     cursor: pointer;
     width: 90px;
