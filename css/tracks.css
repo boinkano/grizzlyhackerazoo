@@ -45,3 +45,21 @@
 
 }
 
+
+/* Mobile View */
+@media (max-width: 768px) {
+
+    .trackTitle {
+        font-size: 35px;
+    }
+
+    .surfboard-container {
+        width: 100%;
+    }
+
+    .overlay-text {
+        font-size: 21px;
+        top: 37%
+
+    }
+}
