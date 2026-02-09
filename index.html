@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="css/beach.css" />
         <link rel="stylesheet" href="css/bridge.css" />
         <link rel="stylesheet" href="css/schedule.css" />
+        <link rel="stylesheet" href="css/tracks.css"/>
+
     </head>
     <body>
         <div id="preloader">
@@ -19,7 +21,7 @@
         <div class="modal-overlay" id="modalOverlay">
             <div class="modal-panel" id="modalPanel">
                 <button class="close-btn" onclick="closeModal()">✕</button>
-                <h2 id="modalTitle" style="margin-top: 0">Title</h2>
+                <h1 id="modalTitle" style="margin-top: 0">Title</h1>
                 <div id="modalContent">Content goes here...</div>
             </div>
         </div>
@@ -59,39 +61,55 @@
                 </div>
             </div>
             <div class="beach-page-2">
-                <h2>CHOOSE YOUR TRACK</h2>
-                <div class="track-container">
-                    <div
-                        class="popout-trigger track-red"
-                        onclick="openModal(this, 1)"
-                        data-title="TRACK 1: RED"
-                        data-content="Content..."
-                    >
-                        TRACK 1 (Red)
+                <h2 class="trackTitle">Choose Your Track</h2>
+                <div class="surfboard-container">
+                    <div class="pink-surfboard popout-trigger">
+                        <img
+                            src="assets/tracks/pink-surfboard.svg"
+                            onclick="openModal(this, 1)"
+                            data-title="AI/ML"
+                            data-content="The AI/ML track is a playground for artificial intelligence and machine learning enthusiasts to showcase how algorithms can transform industries. Centering on discovering algorithms, building smart systems, and applying data science to real world problems. The AI/ML track is the space to innovate, create, and to push boundaries. Dive into the world of smart technology where code comes to life."
+                            alt="Pink Surfboard"
+                        >
+                        <div class="overlay-text">
+                            AI/ML
+                        </div>
                     </div>
-                    <div
-                        class="popout-trigger track-green"
-                        onclick="openModal(this, 2)"
-                        data-title="TRACK 2: GREEN"
-                        data-content="Content..."
-                    >
-                        TRACK 2 (Green)
+                    <div class="popout-trigger green-surfboard">
+                        <img 
+                            src="assets/tracks/green-surfboard.svg"
+                            onclick="openModal(this, 2)"
+                            data-title="Social Good"
+                            data-content="The Social Good track is dedicated to harnessing technology for positive impact. Focusing on finding solutions that address community needs, sustainability challenges, and educational opportunities. The Social Good track is all about using technology to improve lives, protect the environment, and ensure that education and opportunities are accessible to all."
+                            alt="Green Surfboard"
+                        >
+                        <div class="overlay-text">
+                            Social Good
+                        </div>
                     </div>
-                    <div
-                        class="popout-trigger track-blue"
-                        onclick="openModal(this, 3)"
-                        data-title="TRACK 3: BLUE"
-                        data-content="Content..."
-                    >
-                        TRACK 3 (Blue)
+                    <div class="popout-trigger purple-surfboard">
+                        <img
+                            src="assets/tracks/lilac-surfboard.svg"
+                            onclick="openModal(this, 3)"
+                            data-title="Fintech"
+                            data-content="The Fintech track merges finance with the latest tech to streamline and secure money matters for everyone. It's about redefining financial interactions for the digital age, making them more accessible and user-friendly."
+                            alt="Lilac Surfboard"
+                        >
+                        <div class="overlay-text">
+                            Fintech
+                        </div>
                     </div>
-                    <div
-                        class="popout-trigger track-purple"
-                        onclick="openModal(this, 4)"
-                        data-title="TRACK 4: PURPLE"
-                        data-content="Content..."
-                    >
-                        TRACK 4 (Purple)
+                    <div class="popout-trigger teal-surfboard">
+                        <img 
+                            src="assets/tracks/teal-surfboard.svg"
+                            onclick="openModal(this, 4)"
+                            data-title="Hell's Kitchen"
+                            data-content="Secret Track :)"
+                            alt="Teal Surfboard"
+                        >
+                        <div class="overlay-text">
+                            Hell's Kitchen
+                        </div>
                     </div>
                 </div>
             </div>
