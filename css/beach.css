@@ -37,7 +37,7 @@
     position: absolute;
     right: 10%;
     top: 2%;
-    width: clamp(100px, 12vw, 180px);
+    width: clamp(70px, 8vw, 120px);
     height: auto;
     transform: perspective(800px) rotateY(0deg) rotateX(0deg) rotateZ(45deg);
     will-change: transform;
