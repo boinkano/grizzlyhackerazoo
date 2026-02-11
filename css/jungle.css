@@ -343,7 +343,7 @@
     background: #ffffff;
     color: #0d3d8a;
     font-family: inherit;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     font-weight: 800;
     text-align: center;
     cursor: pointer;
@@ -357,7 +357,6 @@
         top: 50%;
         left: 50%;
         transform: translateY(-50%) rotate(-90deg);
-        font-size: 1.2rem;
     }
 
     .suitcase .suitcase-zoom-trigger:hover {
