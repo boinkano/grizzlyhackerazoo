@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@500;900&display=swap");
 
 #scene-intro {
-  background-image: url("../assets/beach_bg.png");
+  background-image: url("../assets/beach_bg.svg");
   background-size: cover;
-  background-position: center;
+  background-position: end;
   background-repeat: no-repeat;
   height: 100dvh;
   display: flex;
