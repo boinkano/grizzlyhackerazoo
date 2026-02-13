@@ -33,3 +33,50 @@
 .toggle-nav {
     display: none;
 }
+
+@media (max-width: 768px) {
+    .toggle-nav {
+        display: block;
+        background: transparent;
+        border: none;
+        font-size: 22px;
+        color: #244924;
+        cursor: pointer;
+        padding: 6px 10px;
+    }
+
+    /* hide menu by default on mobile */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+
+        /* key fix: don't use 100% of the tiny navbar */
+        width: min(86vw, 280px);
+        background-color: #80EF80;
+        border-radius: 18px;
+        padding: 8px;
+
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .nav-links.active {
+        display: block;
+    }
+
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .nav-links li a {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 0.9rem;
+        border-radius: 14px;
+        white-space: nowrap; /* keeps each item clean */
+        background: rgba(255,255,255,0.35);
+    }
+}
