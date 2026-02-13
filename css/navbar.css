@@ -26,7 +26,7 @@
     padding: 0.5rem 1rem;
 }
 
-.navbar-links.active {
+.nav-links.active {
     display: flex; 
 }
 
@@ -51,14 +51,12 @@
         position: absolute;
         top: calc(100% + 10px);
         left: 0;
-
-        /* key fix: don't use 100% of the tiny navbar */
         width: min(86vw, 280px);
         background-color: #80EF80;
         border-radius: 18px;
         padding: 8px;
-
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        /* overflow: hidden; */
+        box-shadow: 0 10px 14px rgba(0,0,0,0.15);
     }
 
     .nav-links.active {
@@ -72,11 +70,11 @@
     }
 
     .nav-links li a {
-        width: 100%;
         text-align: center;
         padding: 0.75rem 0.9rem;
-        border-radius: 14px;
-        white-space: nowrap; /* keeps each item clean */
+        border-radius: 10px;
+        margin: 2px 0;
+        white-space: nowrap;
         background: rgba(255,255,255,0.35);
     }
 }
