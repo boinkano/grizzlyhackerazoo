@@ -132,6 +132,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // ============ SPONSOR ENTRANCE ANIMATION ============
+  const boatGrid = document.querySelector(".boat-grid");
+  if (boatGrid) {
+    gsap.from(boatGrid, {
+      x: -500,
+      opacity: 0,
+      duration: 1.5,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#horizontal-scroll-wrapper",
+        start: "top 70%",
+        toggleActions: "play none none none",
+      },
+    });
+  }
+
   // ============ BRIDGE FUNCTIONALITY ============
 
   // Load FAQ planks from data/faq.json
